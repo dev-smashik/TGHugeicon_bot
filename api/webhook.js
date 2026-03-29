@@ -20,16 +20,16 @@ const HEADERS = {
   "Accept-Language": "en-US,en;q=0.5",
 };
 
-const WELCOME_MESSAGE = `👋 স্বাগতম\! Icon Converter Bot\-এ আপনাকে আমন্ত্রণ।
+const WELCOME_MESSAGE = `👋 স্বাগতম\\! Icon Converter Bot\\-এ আপনাকে আমন্ত্রণ।
 
 এই বটটির মাধ্যমে আপনি খুব সহজেই আপনার প্রয়োজনীয় আইকনগুলোর SVG ফরম্যাট দ্রুত সংগ্রহ করতে পারবেন। 
 
 📌 কীভাবে ব্যবহার করবেন:
-১\. আপনার কাঙ্ক্ষিত আইকনের \(HugeIcons বা FlatIcon\) লিংকটি কপি করুন।
-২\. লিংকটি এই চ্যাটে পেস্ট করুন।
-৩\. বট থেকে আপনার প্রস্তুতকৃত SVG ফাইলটি সংগ্রহ করুন।
+১\\. আপনার কাঙ্ক্ষিত আইকনের \\(HugeIcons বা FlatIcon\\) লিংকটি কপি করুন।
+২\\. লিংকটি এই চ্যাটে পেস্ট করুন।
+৩\\. বট থেকে আপনার প্রস্তুতকৃত SVG ফাইলটি সংগ্রহ করুন।
 
-যেকোনো আইকনের লিংক পেস্ট করে এখনই শুরু করুন\!`;
+যেকোনো আইকনের লিংক পেস্ট করে এখনই শুরু করুন\\!`;
 
 function detectPlatform(url) {
   if (url.includes("hugeicons.com")) return "hugeicons";
@@ -119,7 +119,7 @@ async function handleMessage(msg) {
   if (!urlMatch) {
     await bot.sendMessage(
       chatId,
-      "⚠️ Bhai, give me a valid HugeIcons or FlatIcon link, then I will surprise you\\!\n\nExample:\n`https://hugeicons\\.com/icon/",
+      "⚠️ Bhai, give me a valid HugeIcons or FlatIcon link, then I will surprise you\\!\n\nExample:\n`https://hugeicons\\.com/icon/delete\\-01?style=stroke\\-sharp`",
       { parse_mode: "MarkdownV2" }
     );
     return;
@@ -131,7 +131,7 @@ async function handleMessage(msg) {
   if (!platform) {
     await bot.sendMessage(
       chatId,
-      "❌ Bhai, I don't support this link.\\. Only HugeIcons or FlatIcon link\\.",
+      "❌ Bhai, I don't support this link\\. Only HugeIcons or FlatIcon link\\.",
       { parse_mode: "MarkdownV2" }
     );
     return;
