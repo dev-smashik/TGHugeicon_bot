@@ -20,15 +20,16 @@ const HEADERS = {
   "Accept-Language": "en-US,en;q=0.5",
 };
 
-const WELCOME_MESSAGE = `😤 প্রতিবার $10 দিয়া icon কিনতে কিনতে ক্লান্ত?
-এই বটে আয়। HugeIcons বা FlatIcon\\-এর যেকোনো icon\\-এর link দে।
-আমি SVG কইরা দিমু — একদম ফ্রি, একদম হালাল 😇
-_\\(হালাল কিনা সেইটা তোর ব্যাপার\\)_
+const WELCOME_MESSAGE = `👋 স্বাগতম\! Icon Converter Bot\-এ আপনাকে আমন্ত্রণ।
 
-কীভাবে ব্যবহার করবি:
-1\\. Icon\\-এর link copy কর
-2\\. এই বটে paste কর
-3\\. SVG নিয়া যা — কাজ শেষ ✌️`;
+এই বটটির মাধ্যমে আপনি খুব সহজেই আপনার প্রয়োজনীয় আইকনগুলোর SVG ফরম্যাট দ্রুত সংগ্রহ করতে পারবেন। 
+
+📌 কীভাবে ব্যবহার করবেন:
+১\. আপনার কাঙ্ক্ষিত আইকনের \(HugeIcons বা FlatIcon\) লিংকটি কপি করুন।
+২\. লিংকটি এই চ্যাটে পেস্ট করুন।
+৩\. বট থেকে আপনার প্রস্তুতকৃত SVG ফাইলটি সংগ্রহ করুন।
+
+যেকোনো আইকনের লিংক পেস্ট করে এখনই শুরু করুন\!`;
 
 function detectPlatform(url) {
   if (url.includes("hugeicons.com")) return "hugeicons";
@@ -118,7 +119,7 @@ async function handleMessage(msg) {
   if (!urlMatch) {
     await bot.sendMessage(
       chatId,
-      "⚠️ Bhai, ekta valid HugeIcons ba FlatIcon link de\\!\n\nExample:\n`https://hugeicons\\.com/icon/delete\\-01?style=stroke\\-sharp`",
+      "⚠️ Bhai, give me a valid HugeIcons or FlatIcon link, then I will surprise you\\!\n\nExample:\n`https://hugeicons\\.com/icon/",
       { parse_mode: "MarkdownV2" }
     );
     return;
@@ -130,7 +131,7 @@ async function handleMessage(msg) {
   if (!platform) {
     await bot.sendMessage(
       chatId,
-      "❌ Ei link support kori na bhai\\. Shudhu HugeIcons ba FlatIcon link de\\.",
+      "❌ Bhai, I don't support this link.\\. Only HugeIcons or FlatIcon link\\.",
       { parse_mode: "MarkdownV2" }
     );
     return;
@@ -169,7 +170,7 @@ async function handleMessage(msg) {
     await bot.sendDocument(
       chatId,
       fileBuffer,
-      { caption: `📁 ${fileName} — download kore direct use kor!` },
+      { caption: `📁 ${fileName} — download kore direct use koro!` },
       { filename: fileName, contentType: "image/svg+xml" }
     );
   } catch (err) {
