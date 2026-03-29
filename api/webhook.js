@@ -1,9 +1,17 @@
 const TelegramBot = require("node-telegram-bot-api");
 const axios = require("axios");
 
-// Initialize bot without polling so it works smoothly in a serverless environment
+// Initialize bot. If running locally with node api/webhook.js --local, enable polling.
+const isLocal = process.argv.includes("--local");
+if (isLocal) {
+  require("dotenv").config();
+}
 const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const bot = new TelegramBot(TOKEN);
+const bot = new TelegramBot(TOKEN, { polling: isLocal });
+
+if (isLocal) {
+  console.log("🤖 Running in LOCAL POLLING mode. Send a message to your bot!");
+}
 
 // HEADERS for scraping
 const HEADERS = {
@@ -173,6 +181,13 @@ async function handleMessage(msg) {
       { parse_mode: "MarkdownV2" }
     );
   }
+}
+
+if (isLocal) {
+  bot.on("message", (msg) => {
+    // We ignore the initial undefined messages that node-telegram-bot-api might send
+    if (msg) handleMessage(msg).catch(console.error);
+  });
 }
 
 // Vercel serverless function export

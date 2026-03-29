@@ -5,6 +5,8 @@
   "main": "api/webhook.js",
   "scripts": {
     "start": "node api/webhook.js",
+    "build": "echo 'No build required for serverless API'",
+    "dev": "node --watch api/webhook.js --local",
     "set-webhook": "node scripts/set-webhook.js"
   },
   "dependencies": {
